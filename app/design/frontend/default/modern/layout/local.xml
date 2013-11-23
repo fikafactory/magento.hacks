@@ -1,0 +1,13 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="footer_links">
+                <action method="addLink" translate="label title">
+                        <label>Facebook</label>
+                        <url>http://facebook.com/fikafactory</url>
+                        <title>Facebook</title>
+                        <prepare/>
+                        <urlparams/>
+                </action>
+        </reference>
+    </default>
+</layout>

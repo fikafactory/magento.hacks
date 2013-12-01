@@ -50,7 +50,11 @@
 
         <div class="product-shop">
             <div class="product-name">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                <h1><?php 
+			echo $_helper->productAttribute($_product, $_product->getName(), 'name'); 
+			if($_helper->productAttribute($_product, $_product->getFfGlutenFree(), 'ff_gluten_free'))
+				echo " - Gluten Free";
+		 ?></h1>
             </div>
 
             <?php if ($this->canEmailToFriend()): ?>
@@ -75,6 +79,13 @@
                 </div>
             <?php endif; ?>
 
+	    <?php if ($_product->getFfMainNotes()):?>
+                <div class="short-description">
+                    <h2><?php echo $this->__('Main Notes') ?></h2>
+                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getFfMainNotes()), 'ff_main_notes') ?></div>
+                </div>
+            <?php endif;?>
+
             <?php if ($_product->getShortDescription()):?>
                 <div class="short-description">
                     <h2><?php echo $this->__('Overview') ?></h2>
@@ -83,8 +94,6 @@
             <?php endif;?>
             <?php if ($_product->getDescription()):?>
                 <div class="short-description">
-		    <h2><?php echo $this->__('Main Notes') ?></h2>
-		    <div class="std"><?php echo $_helper->productAttribute($_product, $_product->getFfMainNotes(), 'ff_main_notes') ?></div>
                     <h2><?php echo $this->__('Ingredients') ?></h2>
                     <div class="std"><?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'description') ?></div>
                 </div>
